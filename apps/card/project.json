@@ -7,7 +7,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": [
         "{options.outputPath}"
       ],
@@ -30,7 +30,10 @@
         ],
         "scripts": [],
         "main": "apps/card/src/main.ts",
-        "commonChunk": false
+        "commonChunk": false,
+        "customWebpackConfig": {
+          "path": "apps/card/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -46,7 +49,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/card/webpack.prod.config.js"
+          }
         },
         "development": {
           "optimization": false,
@@ -57,7 +63,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "card:build:production"
