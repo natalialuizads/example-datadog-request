@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'example-datadog',
+  displayName: 'header',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/example-datadog',
+  coverageDirectory: '../../coverage/apps/header',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

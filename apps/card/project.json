@@ -1,28 +1,36 @@
 {
-  "name": "example-datadog",
+  "name": "card",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/example-datadog/src",
+  "sourceRoot": "apps/card/src",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/apps/example-datadog",
-        "index": "apps/example-datadog/src/index.html",
-        "browser": "apps/example-datadog/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "apps/example-datadog/tsconfig.app.json",
+        "outputPath": "dist/apps/card",
+        "index": "apps/card/src/index.html",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/card/tsconfig.app.json",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/example-datadog/public"
+            "input": "apps/card/public",
+            "output": "."
           }
         ],
-        "styles": ["apps/example-datadog/src/styles.css"],
-        "scripts": []
+        "styles": [
+          "apps/card/src/styles.css"
+        ],
+        "scripts": [],
+        "main": "apps/card/src/main.ts",
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -52,18 +60,23 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "example-datadog:build:production"
+          "buildTarget": "card:build:production"
         },
         "development": {
-          "buildTarget": "example-datadog:build:development"
+          "buildTarget": "card:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "buildTarget": "example-datadog:build"
+        "buildTarget": "card:build",
+        "extraWebpackConfig": "apps/card/webpack.config.js"
       }
     },
     "lint": {
@@ -71,17 +84,19 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
-        "jestConfig": "apps/example-datadog/jest.config.ts"
+        "jestConfig": "apps/card/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "example-datadog:build",
+        "buildTarget": "card:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/example-datadog/browser",
+        "staticFilePath": "dist/apps/card/browser",
         "spa": true
       }
     }
