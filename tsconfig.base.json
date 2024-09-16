@@ -10,21 +10,14 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-monorepo/mfe-wrapper": [
-        "libs/mfe-wrapper/src/index.ts"
-      ]
+      "@angular-monorepo/logger": ["libs/logger/src/index.ts"],
+      "@angular-monorepo/mfe-wrapper": ["libs/mfe-wrapper/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

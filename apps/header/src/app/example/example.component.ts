@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { datadogExampleLib } from '@angular-monorepo/logger';
 
 @Component({
   selector: 'app-example',
@@ -20,7 +21,7 @@ export class ExampleComponent {
   httpClient = inject(HttpClient);
 
   sendLog() {
-
+    datadogExampleLib.logger.debug('example debug mfe header');
   }
 
   executeError() {
