@@ -59,12 +59,11 @@ export class Config {
         const currentUrl = window.location.origin;
         const contextUrlOrigin = context?.handlingStack?.match(regex)?.[0];
         const eventUrlOrigin = event?.error?.stack?.match(regex)?.[0];
-        const originURL = contextUrlOrigin || eventUrlOrigin;
+        const originURL = eventUrlOrigin || contextUrlOrigin;
         const isDifferentUrlCurrent = !!originURL && (originURL !== currentUrl);
 
         if(isDifferentUrlCurrent){
          const mfe = this.sessionStorageForMicroFront.getItem(originURL);
-
 
           if(mfe){
             event.service = mfe.name;
@@ -73,7 +72,7 @@ export class Config {
           }
         }
 
-
+        console.log('event', event);
         return true
       }
     });

@@ -22,7 +22,7 @@ export class ExampleComponent {
   httpClient = inject(HttpClient);
 
   sendLog() {
-    datadogExampleLib.logger.error('example error mfe footer');
+    (window as any)['DD_LOGS'].logger.error('example error mfe footer');
   }
 
   executeError() {

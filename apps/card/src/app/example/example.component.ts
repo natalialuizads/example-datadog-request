@@ -21,8 +21,18 @@ export class ExampleComponent {
 
   httpClient = inject(HttpClient);
 
+  constructor(){
+    datadogExampleLib.init({
+      microFrontend: true,
+      name: 'mfe-card',
+      version: '1.0.0',
+      env: 'development',
+      applicationUrl: 'http://localhost:4201'
+    });
+  }
+
   sendLog() {
-    datadogExampleLib.logger.warn('example warn mfe card');
+    (window as any)['DD_LOGS'].logger.warn('example warn mfe card');
   }
 
   executeError() {

@@ -10,4 +10,7 @@ import { ExampleComponent } from './example/example.component';
 })
 export class AppComponent {
   title = 'card';
+
+  constructor() {
+  }
 }

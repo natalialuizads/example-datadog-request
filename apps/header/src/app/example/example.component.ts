@@ -21,7 +21,7 @@ export class ExampleComponent {
   httpClient = inject(HttpClient);
 
   sendLog() {
-    datadogExampleLib.logger.debug('example debug mfe header');
+    (window as any)['DD_LOGS'].logger.debug('example debug mfe header');
   }
 
   executeError() {
